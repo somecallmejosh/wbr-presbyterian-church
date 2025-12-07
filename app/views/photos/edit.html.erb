@@ -1,0 +1,12 @@
+<% content_for :title, "Editing photo" %>
+
+<div class="wrapper">
+  <h1>Editing photo</h1>
+  <%= image_tag(@photo.image.variant(resize_to_limit: [200, 200]), height: 200, width: 200) %>
+
+  <%= render "form", photo: @photo %>
+  <div class="actions">
+    <%= link_to "Back to photos", photos_path, class: "btn-link-back" %>
+    <%= link_to "Show this photo", @photo, class: "btn-link" %>
+  </div>
+</div>

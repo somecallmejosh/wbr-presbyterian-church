@@ -1,0 +1,17 @@
+<div class="wrapper">
+
+<% content_for :title, "Showing photo" %>
+
+  <h1>Showing photo</h1>
+
+  <%= render @photo %>
+
+  <div class="actions">
+    <%= link_to "Back to photos", photos_path, class: "btn-link-back" %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit this photo", edit_photo_path(@photo), class: "btn-link" %>
+      <%= button_to "Delete this photo", @photo, method: :delete, form_class: "delete-form", class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+
+</div>

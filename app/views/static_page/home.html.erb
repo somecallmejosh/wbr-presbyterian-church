@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <h1>West Baton Rouge Presbyterian Church</h1>
+    <ul class="grid">
+    <li>
+      <img src="https://res.cloudinary.com/dwjulenau/image/upload/c_scale,dpr_auto,f_auto,fl_progressive,q_auto,w_600/v1765055082/WBR%20Presbyterian/church-front.png" alt="" height="260" width="389">
+    </li>
+    <li>
+      <img src="https://res.cloudinary.com/dwjulenau/image/upload/c_scale,dpr_auto,f_auto,fl_progressive,q_auto,w_600/v1765054974/WBR%20Presbyterian/church-altar.png" alt="" height="260" width="389">
+    </li>
+    <li>
+      <img src="https://res.cloudinary.com/dwjulenau/image/upload/c_scale,dpr_auto,f_auto,fl_progressive,q_auto,w_600/v1765055090/WBR%20Presbyterian/church-pews.png" alt="" height="260" width="389">
+    </li>
+  </ul>
+  <p>Founded in 1939 under the sponsorship of First Presbyterian Church of Louisiana, our congregation has served the West Baton Rouge community in faithful worship and ministry for nearly a century. As a member of the Presbytery of South Louisiana, we continue to uphold the traditions of our Reformed heritage and gather each week to glorify God and serve our neighbors.</p>
+
+  <h2 class="text-md">Birthdays This Month:</h2>
+  <p>We celebrate the members of our church family who are marking another year of life this month. Join us in offering prayers, well-wishes, and warm greetings to each one.
+  <ul>
+    <% @birthday_members.each do |member| %>
+    <li>
+      <%= member.first_name %> <%= member.last_name %> - <%= member.date_of_birth.strftime("%b %e") %>
+    </li>
+  <% end %>
+  </ul>
+
+  <% if @this_weeks_events.any? %>
+    <h2 class="text-md">This Week's Events:</h2>
+    <p>Here’s a look at what’s happening in our church this week. We invite you to join us for worship, fellowship, and service as we grow in faith and community together.</p>
+    <ul>
+      <% @this_weeks_events.each do |event| %>
+      <li>
+        <%= link_to event_path(event) do %>
+          <strong><%= event.title %></strong>
+          <%= event.starts_at.strftime("%A, %b %e at %l:%M %p") %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

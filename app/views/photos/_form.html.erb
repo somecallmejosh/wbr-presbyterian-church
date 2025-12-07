@@ -1,0 +1,24 @@
+<%= form_with(model: photo, class: "contents") do |form| %>
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+        <% photo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :caption %>
+    <%= form.text_field :caption, class: ["form-input", {"": photo.errors[:caption].none?, "input-error": photo.errors[:caption].any?}] %>
+  </div>
+  <%= form.hidden_field :gallery_id %>
+
+
+  <div class="inline">
+    <%= form.submit  %>
+  </div>
+<% end %>

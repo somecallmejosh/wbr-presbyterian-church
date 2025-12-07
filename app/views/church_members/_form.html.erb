@@ -1,0 +1,37 @@
+<%= form_with(model: church_member, class: "contents") do |form| %>
+  <% if church_member.errors.any? %>
+    <div id="error_explanation" class="forr-error-wrapper">
+      <h2><%= pluralize(church_member.errors.count, "error") %> prohibited this church_member from being saved:</h2>
+
+      <ul>
+        <% church_member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: ["form-input", {"form-error": church_member.errors[:first_name].none?, "input-error": church_member.errors[:first_name].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: ["form-input", {"form-error": church_member.errors[:last_name].none?, "input-error": church_member.errors[:last_name].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_joined %>
+    <%= form.date_field :date_joined, class: ["form-input", {"form-error": church_member.errors[:date_joined].none?, "input-error": church_member.errors[:date_joined].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_of_birth %>
+    <%= form.date_field :date_of_birth, class: ["form-input", {"form-error": church_member.errors[:date_of_birth].none?, "input-error": church_member.errors[:date_of_birth].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit %>
+  </div>
+<% end %>

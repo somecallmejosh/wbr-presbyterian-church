@@ -1,0 +1,7 @@
+<div id="<%= dom_id gallery %>" >
+  <% if gallery.photos.any? %>
+    <%= image_tag gallery.photos.first.image.variant(resize_to_limit: [400, 400]), height: 400, width: 400  %>
+  <% end %>
+  <h2 class="text-md"><%= link_to gallery.title, gallery %></h2>
+  <p><%= gallery.description %></p>
+</div>

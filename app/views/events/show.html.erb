@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <% content_for :title, @event.title %>
+  <p class="badge">Event</p>
+  <h1><%= @event.title %></h1>
+  <p><%= @event.starts_at.strftime("%b %e, %Y @ %l:%M %p") %> to <%= @event.ends_at.strftime("%b %e, %Y @ %l:%M %p") %></p>
+  <p><strong>Location:</strong> <%= @event.location %></p>
+  <p><%= @event.description %></p>
+
+  <div class="actions">
+    <%= link_to "Back to events", events_path, class: "btn-link-back" %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit this event", edit_event_path(@event), class: "btn-link" %>
+      <%= button_to "Delete this event", @event, method: :delete, form_class: "delete-form", class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+</div>

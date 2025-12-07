@@ -1,0 +1,48 @@
+<%= form_with(model: gallery, class: "contents") do |form| %>
+  <% if gallery.errors.any? %>
+    <div id="error_explanation" class="form-error-wrapper">
+      <h2><%= pluralize(gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
+
+      <ul>
+        <% gallery.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["form-field", {"form-field-error": gallery.errors[:title].none?, "input-error": gallery.errors[:title].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.textarea :description, rows: 4, class: ["form-field", {"form-field-error": gallery.errors[:description].none?, "input-error": gallery.errors[:description].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <% if gallery.persisted? && gallery.photos.any? %>
+      <%= form.hidden_field :photo_order, value: gallery.photos.order(:position).pluck(:id).join(',') %>
+      <ul class="sortable-list" data-controller="sortable">
+        <% gallery.photos.order(:position).each do |photo| %>
+          <li data-id="<%= photo.id %>" class="sortable-item">
+            <%= image_tag photo.image.variant(resize_to_limit: [100, 100]), height: 100, width: 100 %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :images, "Upload Images" %>
+    <div data-controller="dropzone" class="form-input-upload" data-action="click->dropzone#click" data-dropzone-target="zone">
+      <span data-dropzone-target="message">Drag and drop images here or click to select</span>
+      <%= form.file_field :images, multiple: true, data: { dropzone_target: "input" }, class: "hidden" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,57 @@
+ul:not(.grid):not(.sortable-list):not(.unstyled-list), ol:not(.grid):not(.sortable-list):not(.unstyled-list) {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  > * + * {
+    margin-top: 0.5rem;
+  }
+}
+
+ul:not(.grid):not(.sortable-list):not(.unstyled-list) {
+  list-style-type: disc;
+}
+
+ol:not(.grid):not(.sortable-list):not(.unstyled-list) {
+  list-style-type: decimal;
+}
+
+
+.sortable-list {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  padding: 3.5rem 1rem 1rem;
+  border-radius: 4px;
+  background: var(--color-bg);
+  position: relative;
+
+  &::before {
+    content: "Drag images to change their order.";
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sortable-item {
+    padding: 0.5rem;
+    background-color: #fff;
+    border: 1px solid var(--color-border-subtle);
+    margin-bottom: 0.5rem;
+    cursor: grab;
+    width: 100%;
+    max-width: 100%;
+
+    &.sortable-chosen {
+      border: var(--color-border-strong) 2px dashed;
+      transition: transform 0.2s;
+      transform: scale(1.02);
+    }
+
+    &.sortable-ghost {
+      border: 2px dashed var(--color-border-strong);
+      background: var(--color-bg-alt);
+    }
+  }
+ }

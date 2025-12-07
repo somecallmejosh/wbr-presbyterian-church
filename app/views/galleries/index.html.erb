@@ -1,0 +1,27 @@
+<div class="wrapper">
+<% content_for :title, "Galleries" %>
+
+  <h1>Galleries</h1>
+  <% if user_signed_in? %>
+    <%= link_to "New gallery", new_gallery_path, class: "btn-new-link" %>
+  <% end %>
+  <p>Welcome to our church photo gallery! Here you’ll find snapshots of worship, fellowship, service projects, and the everyday moments that make our congregation feel like family. We hope these images give you a glimpse into the life of our church and the joy we share as we grow and serve together. Feel free to browse through each gallery and see how God continues to work in and through our community.</p>
+  <ul class="grid" id="galleries">
+    <% if @galleries.any? %>
+      <% @galleries.each do |gallery| %>
+        <li>
+          <%= render gallery %>
+          <div class="actions">
+            <%= link_to "Show", gallery, class: "btn-link" %>
+            <% if user_signed_in? %>
+              <%= link_to "Edit", edit_gallery_path(gallery), class: "btn-link" %>
+              <%= button_to "Delete", gallery, method: :delete, class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    <% else %>
+      <p>There are no galleries to display at this time.</p>
+    <% end %>
+  </ul>
+</div>

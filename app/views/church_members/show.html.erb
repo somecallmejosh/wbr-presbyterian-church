@@ -1,0 +1,16 @@
+<div class="wrapper">
+<% content_for :title, "Showing church member" %>
+  <p class="badge">Church Member</p>
+  <h1><%= @church_member.name %></h1>
+
+  <%= render @church_member %>
+
+  <div class="actions">
+    <%= link_to "Back to church members", church_members_path, class: "btn-link-back" %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit this church member", edit_church_member_path(@church_member), class: "btn-link" %>
+      <%= button_to "Delete this church member", @church_member, method: :delete, form_class: "delete-form", class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+
+</div>

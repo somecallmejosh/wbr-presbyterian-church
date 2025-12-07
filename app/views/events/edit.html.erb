@@ -1,0 +1,11 @@
+<% content_for :title, "Editing event" %>
+
+  <p class="badge">Event</p>
+  <h1><%= @event.title %></h1>
+  <%= render "form", event: @event %>
+  <div class="actions">
+    <%= link_to "Back to events", events_path, class: "btn-link-back" %>
+    <% if user_signed_in? %>
+      <%= link_to "Show this event", @event, class: "btn-link" %>
+    <% end %>
+  </div>

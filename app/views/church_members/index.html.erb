@@ -1,0 +1,32 @@
+<% content_for :title, "Church members" %>
+
+<div class="wrapper">
+
+  <div >
+    <h1>Church members</h1>
+    <% if user_signed_in? %>
+      <%= link_to "New church member", new_church_member_path, class: "btn-new-link" %>
+    <% end %>
+  </div>
+
+  <div id="church_members" >
+    <% if @church_members.any? %>
+      <ul class="unstyled-list" aria-label="List of church members">
+        <% @church_members.each do |church_member| %>
+          <li>
+            <div class="actions">
+              <%= render church_member %>
+              <div><%= link_to "Show", church_member, class: "btn-link" %></div>
+              <% if user_signed_in? %>
+                <div><%= link_to "Edit", edit_church_member_path(church_member), class: "btn-link" %></div>
+                <%= button_to "Delete", church_member, method: :delete, class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No church members found.</p>
+    <% end %>
+  </div>
+</div>

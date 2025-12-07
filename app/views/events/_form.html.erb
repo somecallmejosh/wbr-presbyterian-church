@@ -1,0 +1,37 @@
+<%= form_with(model: event, class: "contents") do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation" class="form-wrapper">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["form-input", {"": event.errors[:title].none?, "input-error": event.errors[:title].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :starts_at %>
+    <%= form.datetime_field :starts_at, class: ["form-input", {"": event.errors[:starts_at].none?, "input-error": event.errors[:starts_at].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: ["form-input", {"": event.errors[:location].none?, "input-error": event.errors[:location].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.textarea :description, rows: 4, class: ["form-input", {"": event.errors[:description].none?, "input-error": event.errors[:description].any?}] %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit %>
+  </div>
+<% end %>

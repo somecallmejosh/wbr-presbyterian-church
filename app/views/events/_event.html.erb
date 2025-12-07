@@ -1,0 +1,20 @@
+<div id="<%= dom_id event %>" >
+  <h2 class="text-md">
+    <%= event.title %>
+  </h2>
+  <div>
+
+    <%= event.starts_at.strftime("%b %e, %Y @ %l:%M %p") %>
+    to
+    <%= event.ends_at.strftime("%b %e, %Y @ %l:%M %p") %>
+  </div>
+
+  <div>
+    <strong >Location:</strong>
+    <%= event.location %>
+  </div>
+  <div>
+    <strong >Description:</strong>
+    <%= event.description %>
+  </div>
+</div>

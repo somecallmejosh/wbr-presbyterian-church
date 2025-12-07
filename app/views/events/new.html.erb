@@ -1,0 +1,8 @@
+<% content_for :title, "New event" %>
+
+  <p class="badge">Event</p>
+  <h1>New event</h1>
+  <%= render "form", event: @event %>
+  <div class="actions">
+    <%= link_to "Back to events", events_path, class: "btn-link-back" %>
+  </div>

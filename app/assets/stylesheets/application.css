@@ -1,0 +1,147 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+ :root {
+  /* Brand / core colors */
+  --color-primary:        #E8B93A; /* Sunrise Gold */
+  --color-primary-deep:   #D0922A; /* Warm Amber */
+  --color-secondary:      #1E5E9B; /* Covenant Blue */
+  --color-accent:         #3E8A49; /* New Growth Green */
+  --color-accent-soft:    #7BB556; /* Leaf Green */
+  --color-accent-violet:  #C888A8; /* Covenant Violet */
+
+  /* Neutrals */
+  --color-bg:             #FDF9F0; /* very soft, warm off-white */
+  --color-bg-alt:         #F2E5C4; /* Soft Sand (sections, cards) */
+  --color-surface:        #FFFFFF; /* cards, navigation, modals */
+  --color-border-subtle:  #E3D4AF;
+  --color-border-strong:  #C7AE77;
+
+  /* Text */
+  --color-text:           #2C281F; /* main body text */
+  --color-text-soft:      #5B5342; /* muted text */
+  --color-text-on-dark:   #FFFFFF;
+  --color-text-on-primary:#2C281F; /* for buttons on gold */
+  --color-text-link:      #1E5E9B;
+  --color-text-link-hover:#174774;
+
+  /* Status / utility (drawn from palette) */
+  --color-success:        #3E8A49; /* green hillside */
+  --color-info:           #1E5E9B; /* blue */
+  --color-warning:        #E8B93A; /* gold */
+  --color-danger:         #B5413A; /* warm brick red, complementary */
+}
+a, button  {
+  transition: all 0.2s;
+}
+
+a:not([class]) {
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
+}
+
+ body {
+  background-color: var(--color-bg);
+  color: var(--color-text-soft);
+  display: flex;
+  flex-direction: column;
+  font-family: "Outfit", sans-serif;
+  line-height: 1.6;
+  min-height: 100dvh;
+ }
+
+ .bg-image {
+    background-image: url('https://res.cloudinary.com/dwjulenau/image/upload/v1765032899/WBR%20Presbyterian/stainedglass.png');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+ }
+
+ header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 2rem;
+
+  nav {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: var(--color-text-link);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-text-link-hover);
+        text-decoration: underline;
+      }
+    }
+  }
+ }
+
+ .logo {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    height: 50px;
+    width: auto;
+  }
+
+  a {
+    color: var(--color-text-link);
+    font-size: 1.5rem;
+    font-weight: medium;
+    letter-spacing: 2px;
+    text-decoration: none;
+    &:hover {
+      color: var(--color-text-link-hover);
+      text-decoration: underline;
+    }
+  }
+ }
+
+ main {
+  background: white;
+  flex: 1;
+  padding: 4rem 2rem;
+  > * + * {
+    margin-top: 1.5rem;
+  }
+ }
+
+ .wrapper {
+    margin-inline: auto;
+    max-width: 1200px;
+    > * + * {
+      margin-top: 1.5rem;
+    }
+ }
+
+ footer {
+  background-color: #fff;
+  margin-bottom: 4rem;
+  padding: 2rem;
+ }

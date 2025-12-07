@@ -1,0 +1,33 @@
+<div class="wrapper">
+<% content_for :title, "Events" %>
+  <div >
+    <h1>Events</h1>
+    <% if user_signed_in? %>
+      <p><%= link_to "New event", new_event_path, class: "btn-new-link" %></p>
+    <% end %>
+  </div>
+
+  <p>
+    We invite you to join us as we gather for worship, fellowship, and service throughout the year. Our events give us opportunities to grow in faith, strengthen our relationships, and serve our neighbors with joy. Whether you are a long-time member or a first-time visitor, we welcome you to share in the life of our church family.
+  </p>
+  <div id="events" class="">
+    <% if @events.any? %>
+      <ul>
+        <% @events.each do |event| %>
+        <li class="">
+          <%= render event %>
+          <div class="actions">
+            <%= link_to "Show", event, class: "btn-link" %>
+            <% if user_signed_in? %>
+              <%= link_to "Edit", edit_event_path(event), class: "btn-link" %>
+              <%= button_to "Delete", event, method: :delete, class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    <% else %>
+      <p>There are no events scheduled at this time.</p>
+    <% end %>
+  </div>
+</div>

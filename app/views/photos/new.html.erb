@@ -1,0 +1,9 @@
+<% content_for :title, "New photo" %>
+
+<div class="wrapper">
+  <h1>New photo</h1>
+  <%= render "form", photo: @photo %>
+  <div class="actions">
+    <%= link_to "Back to photos", photos_path, class: "btn-link-back" %>
+  </div>
+</div>

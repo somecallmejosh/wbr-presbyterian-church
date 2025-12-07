@@ -1,0 +1,40 @@
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-family: "Libre Caslon Text", serif;
+  text-wrap: balance;
+}
+
+h1, .text-2xl {
+  font-size: clamp(1rem, -0.9513rem + 10.4071vw, 6.854rem);
+  line-height: 1.25;
+}
+
+h2, .text-xl {
+  font-size: clamp(1rem, -0.9513rem + 10.4071vw, 4.236rem);
+  font-weight: 600;
+}
+
+h3, .text-lg {
+  font-size: clamp(1rem, -0.9513rem + 10.4071vw, 2.618rem);
+  font-weight: 600;
+}
+
+h4, .text-md {
+  font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.618rem);
+  font-weight: 600;
+}
+
+h5, .text-base {
+  font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.2rem);
+}
+
+h6 {
+  font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.2rem);
+}
+
+p, li {
+  font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 75ch;
+  text-wrap: pretty;
+}

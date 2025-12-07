@@ -1,0 +1,7 @@
+<% content_for :title, "New church member" %>
+  <p class="badge">Church Member</p>
+  <h1>New church member</h1>
+  <%= render "form", church_member: @church_member %>
+  <div class="actions">
+    <%= link_to "Back to church members", church_members_path, class: "btn-link-back" %>
+  </div>

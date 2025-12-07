@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Church Rails" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Outfit:wght@100..900&display=swap" rel="stylesheet">    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="https://res.cloudinary.com/dwjulenau/image/upload/v1765035098/WBR%20Presbyterian/logo.png" alt="" height="50" width="50">
+        <%= link_to "WBR Presbyterian Church", root_path %>
+      </div>
+      <nav aria-label="Site navigation">
+        <%= link_to "Home", root_path %>
+        <%= link_to "About", about_path %>
+        <%= link_to "Events", events_path %>
+        <%= link_to "Galleries", galleries_path %>
+        <%= link_to "Church Members", church_members_path if user_signed_in? %>
+        <%= link_to "All Photos", photos_path if user_signed_in? %>
+      </nav>
+    </header>
+    <main>
+      <% if notice.present? || alert.present? %>
+        <div class="wrapper">
+          <% if notice.present? %><p class="notice" role="alert"><%= notice %></p><% end %>
+          <% if alert.present? %><p class="alert" role="alert"><%= alert %></p><% end %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="wrapper">
+        <div>
+          <p>&copy; <%= Time.current.year %> West Baton Rouge Presbyterian Church. All rights reserved.
+          <p>
+            <% if user_signed_in? %>
+              Signed in as <%= current_user.email %>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <div class="bg-image"></div>
+  </body>
+</html>
