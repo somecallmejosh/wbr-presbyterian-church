@@ -3,14 +3,27 @@
   <p class="badge">Gallery</p>
   <h1><%= @gallery.title %></h1>
   <p><%= @gallery.description %></p>
-
-  <ul class="grid">
-    <% @gallery.photos.order(:position).each do |photo| %>
-      <li data-order="<%= photo.position %>" data-id="<%= photo.id %>">
-        <%= link_to image_tag(photo.image.variant(resize_to_limit: [400, 400])), url_for(photo.image), target: "_blank" %>
-      </li>
+  <% if user_signed_in? %>
+    <%= form_with model: @gallery, method: :patch do |f| %>
+      <%= f.hidden_field :photo_order %>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gallery-photos" data-controller="sortable">
+        <% @gallery.photos.order(:position).each do |photo| %>
+          <li data-order="<%= photo.position %>" data-id="<%= photo.id %>">
+            <%= link_to image_tag(photo.image.variant(resize_to_limit: [400, 400])), url_for(photo.image), target: "_blank" %>
+          </li>
+        <% end %>
+      </ul>
+      <%= f.submit "Save Order", class: "btn-primary mt-4" %>
     <% end %>
-  </ul>
+  <% else %>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gallery-photos">
+      <% @gallery.photos.order(:position).each do |photo| %>
+        <li>
+          <%= link_to image_tag(photo.image.variant(resize_to_limit: [400, 400])), url_for(photo.image), target: "_blank" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <div class="actions">
     <%= link_to "Back to galleries", galleries_path, class: "btn-link-back" %>

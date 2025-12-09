@@ -1,0 +1,12 @@
+<div class="actions">
+  <div>
+    <%= render photo %>
+  </div>
+  <div>
+    <%= link_to "Show", photo, class: "btn-link" %>
+  </div>
+  <% if user_signed_in? %>
+    <div><%= link_to "Edit", edit_photo_path(photo), class: "btn-link" %></div>
+    <%= button_to "Delete", photo, method: :delete, class: "btn-destroy", data: { turbo_confirm: "Are you sure?" } %>
+  <% end %>
+</div>

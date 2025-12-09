@@ -24,7 +24,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="bg-white/95 border-b border-bg-alt/80 backdrop-blur-sm">
       <div class="logo">
         <img src="https://res.cloudinary.com/dwjulenau/image/upload/v1765035098/WBR%20Presbyterian/logo.png" alt="" height="50" width="50">
         <%= link_to "WBR Presbyterian Church", root_path %>
@@ -38,7 +38,7 @@
         <%= link_to "All Photos", photos_path if user_signed_in? %>
       </nav>
     </header>
-    <main>
+    <main class="bg-gradient-to-b from-bg/99 via-white/98 to-bg/98 border-t border-b border-t-white border-b-bg/90">
       <% if notice.present? || alert.present? %>
         <div class="wrapper">
           <% if notice.present? %><p class="notice" role="alert"><%= notice %></p><% end %>
@@ -47,7 +47,7 @@
       <% end %>
       <%= yield %>
     </main>
-    <footer>
+    <footer class="bg-white/97 border-t border-white backdrop-blur-sm">
       <div class="wrapper">
         <div>
           <p>&copy; <%= Time.current.year %> West Baton Rouge Presbyterian Church. All rights reserved.

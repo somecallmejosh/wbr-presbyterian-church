@@ -22,21 +22,8 @@
   </div>
 
   <div class="form-group">
-    <% if gallery.persisted? && gallery.photos.any? %>
-      <%= form.hidden_field :photo_order, value: gallery.photos.order(:position).pluck(:id).join(',') %>
-      <ul class="sortable-list" data-controller="sortable">
-        <% gallery.photos.order(:position).each do |photo| %>
-          <li data-id="<%= photo.id %>" class="sortable-item">
-            <%= image_tag photo.image.variant(resize_to_limit: [100, 100]), height: 100, width: 100 %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
-  <div class="form-group">
     <%= form.label :images, "Upload Images" %>
-    <div data-controller="dropzone" class="form-input-upload" data-action="click->dropzone#click" data-dropzone-target="zone">
+    <div data-controller="dropzone" class="border-2 border-border-subtle border-dashed p-6 rounded" data-action="click->dropzone#click" data-dropzone-target="zone">
       <span data-dropzone-target="message">Drag and drop images here or click to select</span>
       <%= form.file_field :images, multiple: true, data: { dropzone_target: "input" }, class: "hidden" %>
     </div>

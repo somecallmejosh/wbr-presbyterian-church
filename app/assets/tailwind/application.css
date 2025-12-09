@@ -1,1 +1,32 @@
-/* @import "tailwindcss"; */
+@import "tailwindcss";
+
+@theme {
+  /* Brand / core colors */
+  --color-primary:        #E8B93A; /* Sunrise Gold */
+  --color-primary-deep:   #D0922A; /* Warm Amber */
+  --color-secondary:      #1E5E9B; /* Covenant Blue */
+  --color-accent:         #3E8A49; /* New Growth Green */
+  --color-accent-soft:    #7BB556; /* Leaf Green */
+  --color-accent-violet:  #C888A8; /* Covenant Violet */
+
+  /* Neutrals */
+  --color-bg:             #FDF9F0; /* very soft, warm off-white */
+  --color-bg-alt:         #F2E5C4; /* Soft Sand (sections, cards) */
+  --color-surface:        #FFFFFF; /* cards, navigation, modals */
+  --color-border-subtle:  #E3D4AF;
+  --color-border-strong:  #C7AE77;
+
+  /* Text */
+  --color-text:           #2C281F; /* main body text */
+  --color-text-soft:      #5B5342; /* muted text */
+  --color-text-on-dark:   #FFFFFF;
+  --color-text-on-primary:#2C281F; /* for buttons on gold */
+  --color-text-link:      #1E5E9B;
+  --color-text-link-hover:#174774;
+
+  /* Status / utility (drawn from palette) */
+  --color-success:        #3E8A49; /* green hillside */
+  --color-info:           #1E5E9B; /* blue */
+  --color-warning:        #E8B93A; /* gold */
+  --color-danger:         #B5413A; /* warm brick red, complementary */
+}

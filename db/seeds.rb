@@ -31,3 +31,5 @@ end
     description: Faker::Lorem.paragraph
   )
 end
+
+User.create!(email: 'josh@thebrileys.com', password: 'password', password_confirmation: 'password')

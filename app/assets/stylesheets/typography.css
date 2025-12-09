@@ -32,7 +32,7 @@ h6 {
   font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.2rem);
 }
 
-p, li {
+p, li:not([class]) {
   font-size: clamp(1rem, 0.9333rem + 0.3556vw, 1.25rem);
   line-height: 1.6;
   max-width: 75ch;
